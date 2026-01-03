@@ -1,3 +1,12 @@
 {
-  "keys": []
+  "keys": [
+    {
+      "key": "SNAP-1234-TESTE",
+      "active": true,
+      "expires": "2026-01-10T00:00:00",
+      "maxDevices": 2,
+      "devices": [],
+      "createdAt": "2026-01-03T00:00:00"
+    }
+  ]
 }
