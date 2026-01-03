@@ -1,7 +1,11 @@
 {
-  "active_keys": [
-    "ABC123",
-    "VIP777",
-    "TESTE"
+  "keys": [
+    {
+      "key": "ABC123",
+      "active": true,
+      "expires": 2000000000,
+      "max_devices": 2,
+      "devices": []
+    }
   ]
 }
