@@ -1,11 +1,10 @@
 {
-  "keys": [
-    {
-      "key": "ABC123",
-      "active": true,
-      "expires": 2000000000,
-      "max_devices": 2,
-      "devices": []
-    }
-  ]
+  "5rfLg1PqzQefL": {
+    "status": "active",
+    "expires": 1736200000
+  },
+  "ABC123": {
+    "status": "disabled",
+    "expires": 1736300000
+  }
 }
