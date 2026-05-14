@@ -363,19 +363,55 @@ header{
 
 <section class="section">
 
-<h3>Login Xtream Codes</h3>
+<h3>Canais Ao Vivo</h3>
 
-<div class="login-box">
-    <input type="text" placeholder="Servidor">
-    <input type="text" placeholder="Usuário">
-    <input type="password" placeholder="Senha">
-</div>
-
-<button class="connect-btn" onclick="connectIPTV()">
-Conectar IPTV
-</button>
+<div class="movies" id="channels"></div>
 
 </section>
+
+<script>
+
+const canais = [
+    {
+        nome:'Canal Demo 1',
+        imagem:'https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?q=80&w=1200&auto=format&fit=crop',
+        stream:'https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8'
+    },
+    {
+        nome:'Canal Demo 2',
+        imagem:'https://images.unsplash.com/photo-1492619375914-88005aa9e8fb?q=80&w=1200&auto=format&fit=crop',
+        stream:'https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8'
+    },
+    {
+        nome:'Canal Demo 3',
+        imagem:'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=1200&auto=format&fit=crop',
+        stream:'https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8'
+    }
+];
+
+const channelsDiv = document.getElementById('channels');
+const video = document.querySelector('video');
+
+canais.forEach(canal => {
+
+    channelsDiv.innerHTML += `
+    <div class="card" onclick="playChannel('${canal.stream}')">
+        <img src="${canal.imagem}">
+
+        <div class="card-content">
+            <h4>${canal.nome}</h4>
+            <button>Assistir</button>
+        </div>
+    </div>
+    `;
+});
+
+function playChannel(url){
+    video.src = url;
+    video.play();
+}
+
+</script>
 
 <footer>
 UniTV Clone © 2026
