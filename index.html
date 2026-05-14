@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UniTV Clone</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#050505;
+    color:white;
+}
+
+header{
+    width:100%;
+    padding:20px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:1000;
+    backdrop-filter:blur(15px);
+    background:rgba(0,0,0,0.5);
+    border-bottom:1px solid rgba(255,255,255,0.1);
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.logo-box{
+    width:45px;
+    height:45px;
+    background:#ff0000;
+    border-radius:14px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:22px;
+    font-weight:800;
+}
+
+.logo h1{
+    font-size:28px;
+}
+
+.search-box{
+    display:flex;
+    gap:10px;
+}
+
+.search-box input{
+    background:#111;
+    border:none;
+    outline:none;
+    padding:12px 18px;
+    border-radius:14px;
+    color:white;
+    width:250px;
+}
+
+.search-box button{
+    background:#ff0000;
+    border:none;
+    padding:12px 24px;
+    border-radius:14px;
+    color:white;
+    font-weight:700;
+    cursor:pointer;
+}
+
+.hero{
+    width:100%;
+    height:100vh;
+    background:url('https://image.tmdb.org/t/p/original/8Y43POKjjKDGI9MH89NW0NAzzp8.jpg') center/cover;
+    position:relative;
+    display:flex;
+    align-items:center;
+    padding:80px;
+}
+
+.hero::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:linear-gradient(to right,rgba(0,0,0,0.95),rgba(0,0,0,0.5));
+}
+
+.hero-content{
+    position:relative;
+    max-width:650px;
+    z-index:2;
+}
+
+.hero-content h2{
+    font-size:70px;
+    line-height:1.1;
+    margin-bottom:20px;
+}
+
+.hero-content p{
+    color:#ccc;
+    font-size:18px;
+    line-height:1.8;
+    margin-bottom:30px;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:15px;
+}
+
+.hero-buttons button{
+    padding:15px 30px;
+    border:none;
+    border-radius:16px;
+    font-size:16px;
+    font-weight:700;
+    cursor:pointer;
+}
+
+.play-btn{
+    background:white;
+    color:black;
+}
+
+.list-btn{
+    background:#222;
+    color:white;
+}
+
+.section{
+    padding:50px;
+}
+
+.section h3{
+    font-size:35px;
+    margin-bottom:25px;
+}
+
+.movies{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:#111;
+    border-radius:25px;
+    overflow:hidden;
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:scale(1.04);
+}
+
+.card img{
+    width:100%;
+    height:340px;
+    object-fit:cover;
+}
+
+.card-content{
+    padding:18px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.card-content button{
+    background:#ff0000;
+    border:none;
+    padding:10px 18px;
+    border-radius:12px;
+    color:white;
+    font-weight:700;
+    cursor:pointer;
+}
+
+.player{
+    background:#111;
+    padding:20px;
+    border-radius:30px;
+}
+
+.player video{
+    width:100%;
+    border-radius:20px;
+}
+
+.login-box{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.login-box input{
+    background:#111;
+    border:none;
+    outline:none;
+    padding:18px;
+    border-radius:18px;
+    color:white;
+}
+
+.connect-btn{
+    margin-top:20px;
+    background:#ff0000;
+    border:none;
+    padding:16px 28px;
+    border-radius:16px;
+    color:white;
+    font-size:16px;
+    font-weight:700;
+    cursor:pointer;
+}
+
+footer{
+    text-align:center;
+    padding:40px;
+    color:#777;
+    border-top:1px solid rgba(255,255,255,0.1);
+}
+
+@media(max-width:768px){
+
+header{
+    padding:20px;
+    flex-direction:column;
+    gap:15px;
+}
+
+.hero{
+    padding:30px;
+}
+
+.hero-content h2{
+    font-size:45px;
+}
+
+.hero-content p{
+    font-size:15px;
+}
+
+.section{
+    padding:25px;
+}
+
+.search-box input{
+    width:180px;
+}
+
+}
+</style>
+</head>
+<body>
+
+<header>
+
+<div class="logo">
+    <div class="logo-box">U</div>
+    <h1>UniTV Clone</h1>
+</div>
+
+<div class="search-box">
+    <input type="text" placeholder="Pesquisar filmes...">
+    <button>Entrar</button>
+</div>
+
+</header>
+
+<section class="hero">
+
+<div class="hero-content">
+    <h2>Streaming Premium Estilo UniTV</h2>
+
+    <p>
+        Plataforma moderna com filmes, séries, IPTV e player integrado.
+        Tudo pronto para colocar online.
+    </p>
+
+    <div class="hero-buttons">
+        <button class="play-btn">Assistir</button>
+        <button class="list-btn">Minha Lista</button>
+    </div>
+</div>
+
+</section>
+
+<section class="section">
+
+<h3>Filmes Populares</h3>
+
+<div class="movies">
+
+<div class="card">
+    <img src="https://image.tmdb.org/t/p/w500/rAiYTfKGqDCRIIqo664sY9XZIvQ.jpg">
+
+    <div class="card-content">
+        <h4>Interestelar</h4>
+        <button>Ver</button>
+    </div>
+</div>
+
+<div class="card">
+    <img src="https://image.tmdb.org/t/p/w500/74xTEgt7R36Fpooo50r9T25onhq.jpg">
+
+    <div class="card-content">
+        <h4>Batman</h4>
+        <button>Ver</button>
+    </div>
+</div>
+
+<div class="card">
+    <img src="https://image.tmdb.org/t/p/w500/kyeqWdyUXW608qlYkRqosgbbJyK.jpg">
+
+    <div class="card-content">
+        <h4>Avatar</h4>
+        <button>Ver</button>
+    </div>
+</div>
+
+<div class="card">
+    <img src="https://image.tmdb.org/t/p/w500/RYMX2wcKCBAr24UyPD7xwmjaTn.jpg">
+
+    <div class="card-content">
+        <h4>Vingadores</h4>
+        <button>Ver</button>
+    </div>
+</div>
+
+</div>
+
+</section>
+
+<section class="section">
+
+<h3>Player IPTV</h3>
+
+<div class="player">
+    <video controls>
+        <source src="https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8">
+    </video>
+</div>
+
+</section>
+
+<section class="section">
+
+<h3>Login Xtream Codes</h3>
+
+<div class="login-box">
+    <input type="text" placeholder="Servidor">
+    <input type="text" placeholder="Usuário">
+    <input type="password" placeholder="Senha">
+</div>
+
+<button class="connect-btn" onclick="connectIPTV()">
+Conectar IPTV
+</button>
+
+</section>
+
+<footer>
+UniTV Clone © 2026
+</footer>
+
+<script>
+function connectIPTV(){
+
+    const server = document.querySelectorAll('input')[1].value;
+
+    alert('Sistema IPTV conectado!');
+
+    console.log(server);
+}
+</script>
+
+</body>
+</html>
