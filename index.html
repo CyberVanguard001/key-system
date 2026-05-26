@@ -26,12 +26,7 @@
       display: none !important;
     }
     
-    /* CONTEÚDO PRINCIPAL */
-    .main {
-      margin-left: 0 !important;
-      padding-top: 70px !important;
-      width: 100% !important;
-    }
+    .main { margin-left: 0 !important; padding-top: 70px !important; width: 100% !important; }
     
     /* CABEÇALHO GORDINHO SP */
     .topbar {
@@ -54,10 +49,7 @@
     }
 
     /* SISTEMA DE PESQUISA */
-    .search-section {
-      margin: 20px 0;
-      padding: 0 15px;
-    }
+    .search-section { margin: 20px 0; padding: 0 15px; }
     .search-input {
       width: 100%;
       background: rgba(255, 255, 255, 0.05);
@@ -69,17 +61,10 @@
       outline: none;
       transition: border-color 0.3s;
     }
-    .search-input:focus {
-      border-color: var(--primary);
-    }
+    .search-input:focus { border-color: var(--primary); }
 
     /* CARDS DE ANOS */
-    .year-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      gap: 15px;
-      padding: 15px;
-    }
+    .year-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 15px; padding: 15px; }
     .year-card {
       background: rgba(42, 0, 0, 0.4);
       border: 1px solid rgba(220, 38, 38, 0.2);
@@ -89,34 +74,12 @@
       cursor: pointer;
       transition: all 0.3s ease;
     }
-    .year-card:hover {
-      transform: translateY(-5px);
-      border-color: var(--primary);
-      background: rgba(60, 0, 0, 0.6);
-    }
-    .year-card i {
-      font-size: 38px;
-      color: var(--primary);
-      margin-bottom: 12px;
-      display: block;
-    }
-    .year-card span {
-      font-weight: 700;
-      font-size: 18px;
-      font-family: 'Sora', sans-serif;
-    }
+    .year-card:hover { transform: translateY(-5px); border-color: var(--primary); background: rgba(60, 0, 0, 0.6); }
+    .year-card i { font-size: 38px; color: var(--primary); margin-bottom: 12px; display: block; }
+    .year-card span { font-weight: 700; font-size: 18px; font-family: 'Sora', sans-serif; }
 
     /* BOTÃO VOLTAR */
-    .back-btn {
-      display: none;
-      align-items: center;
-      gap: 8px;
-      color: #fff;
-      cursor: pointer;
-      margin: 0 0 20px 15px;
-      font-weight: 600;
-      width: fit-content;
-    }
+    .back-btn { display: none; align-items: center; gap: 8px; color: #fff; cursor: pointer; margin: 0 0 20px 15px; font-weight: 600; width: fit-content; }
     .back-btn:hover { color: var(--primary); }
 
     .gm-credit{text-align:center;padding:12px;color:#dc2626;font-size:12px;opacity:.7}
@@ -126,9 +89,7 @@
     .pdf-controls{position:fixed!important;left:0!important;right:0!important;bottom:0!important;display:flex!important;visibility:visible!important;opacity:1!important;align-items:center;justify-content:center;gap:12px;padding:10px 12px;background:#1a0000;border-top:1px solid #dc2626;z-index:10001!important}
     .pdf-nav-btn{background:#dc2626;color:#fff;border:none;border-radius:8px;height:40px;padding:0 14px;cursor:pointer}
     .pdf-page-input{width:56px;padding:6px 8px;border-radius:6px;border:1px solid #dc2626;background:#0a0000;color:#fff;text-align:center}
-    @media(max-width:600px){
-      .pdf-controls{left:8px!important;right:8px!important;bottom:20px!important;border-radius:14px}
-    }
+    @media(max-width:600px){ .pdf-controls{left:8px!important;right:8px!important;bottom:20px!important;border-radius:14px} }
   </style>
 </head>
 <body>
@@ -141,10 +102,7 @@
     <main class="content">
       <div class="apostilas-container">
         <div class="apostilas-header" style="padding-left: 15px;">
-          <h1 class="apostilas-title" style="margin-top: 20px;">
-            <i class="fas fa-book-open" style="color: var(--primary);"></i>
-            Apostilas
-          </h1>
+          <h1 class="apostilas-title" style="margin-top: 20px;"><i class="fas fa-book-open" style="color: var(--primary);"></i> Apostilas</h1>
           <p class="apostilas-subtitle">Material de estudo por ano letivo</p>
         </div>
 
@@ -152,18 +110,10 @@
           <input type="text" class="search-input" id="search-bar" placeholder="Pesquisar por ano ou matéria...">
         </div>
 
-        <div class="back-btn" id="back-btn" onclick="backToYears()">
-          <i class="fas fa-arrow-left"></i> Voltar
-        </div>
+        <div class="back-btn" id="back-btn" onclick="backToYears()"><i class="fas fa-arrow-left"></i> Voltar</div>
 
-        <div class="year-grid" id="year-grid">
-          <!-- Gerado dinamicamente -->
-        </div>
-
-        <div class="apostilas-grid" id="apostilas-grid" style="display: none; padding: 15px;">
-          <!-- Apostilas do ano filtrado -->
-        </div>
-
+        <div class="year-grid" id="year-grid"></div>
+        <div class="apostilas-grid" id="apostilas-grid" style="display: none; padding: 15px;"></div>
         <div class="empty-state" id="empty-state" style="display: none; text-align: center; margin-top: 40px;">
           <i class="fas fa-search" style="font-size: 40px; color: #555;"></i>
           <h3 style="margin-top: 15px;">Nenhum resultado encontrado</h3>
@@ -171,7 +121,6 @@
       </div>
     </main>
 
-    <!-- PDF Viewer Modal -->
     <div class="pdf-modal" id="pdf-modal">
       <div class="pdf-header">
         <span class="pdf-title" id="pdf-title">Apostila</span>
@@ -197,38 +146,23 @@
         <button class="pdf-nav-btn" onclick="changePage(1)"><i class="fas fa-chevron-right"></i></button>
       </div>
     </div>
-    
-    <div class="ai-modal" id="ai-modal">
-      <div class="ai-content">
-        <div class="ai-header">
-          <span class="ai-title"><i class="fas fa-robot"></i> Resposta da IA</span>
-          <button class="pdf-close" onclick="closeAIModal()"><i class="fas fa-times"></i></button>
-        </div>
-        <div class="ai-body" id="ai-body"></div>
-      </div>
-    </div>
   </div>
 </div>
 
 <script src="https://crimsonzerohub.xyz/main/apostilas.js?v=15"></script>
-<script src="https://crimsonzerohub.xyz/main/dashboard.js?v=2"></script>
-
 <script>
+  // Script original de dashboard removido para evitar loops de recarregamento
+  window.toggleSidebar = () => {}; window.closeSidebar = () => {}; window.expandSidebar = () => {};
+
   const years = [
-    { id: 6, name: "6º Ano" },
-    { id: 7, name: "7º Ano" },
-    { id: 8, name: "8º Ano" },
-    { id: 9, name: "9º Ano" },
-    { id: 1, name: "1ª Série EM" },
-    { id: 2, name: "2ª Série EM" },
-    { id: 3, name: "3ª Série EM" }
+    { id: 6, name: "6º Ano" }, { id: 7, name: "7º Ano" }, { id: 8, name: "8º Ano" }, { id: 9, name: "9º Ano" },
+    { id: 1, name: "1ª Série EM" }, { id: 2, name: "2ª Série EM" }, { id: 3, name: "3ª Série EM" }
   ];
 
   function renderYears(filter = "") {
     const grid = document.getElementById('year-grid');
     grid.innerHTML = '';
     const filtered = years.filter(y => y.name.toLowerCase().includes(filter.toLowerCase()));
-    
     filtered.forEach(y => {
       const card = document.createElement('div');
       card.className = 'year-card';
@@ -236,7 +170,6 @@
       card.onclick = () => loadYear(y.id);
       grid.appendChild(card);
     });
-
     document.getElementById('empty-state').style.display = filtered.length === 0 ? 'block' : 'none';
   }
 
@@ -246,21 +179,14 @@
     const grid = document.getElementById('apostilas-grid');
     grid.style.display = 'grid';
     grid.innerHTML = '';
-
     if (typeof ALL_APOSTILAS === 'undefined') return;
-
     const filtered = Object.entries(ALL_APOSTILAS).filter(([id, data]) => data.year == yearId);
-
     filtered.forEach(([id, data]) => {
       const card = document.createElement('div');
       card.className = 'apostila-card';
-      card.innerHTML = `
-        <div class="apostila-info">
-          <h3 style="font-size: 16px; margin-bottom: 5px;">${data.name}</h3>
-          <p style="font-size: 13px; color: #aaa;">Vol: ${data.volume}</p>
-        </div>
-        <button class="btn-view" onclick="openApostila('${id}')" style="background:var(--primary); color:#fff; border:none; border-radius:8px; padding:10px; margin-top:10px; cursor:pointer; font-weight:bold;">Visualizar</button>
-      `;
+      card.innerHTML = `<h3 style="font-size: 16px; margin-bottom: 5px;">${data.name}</h3>
+        <p style="font-size: 13px; color: #aaa;">Vol: ${data.volume}</p>
+        <button onclick="openApostila('${id}')" style="background:var(--primary); color:#fff; border:none; border-radius:8px; padding:10px; margin-top:10px; cursor:pointer; font-weight:bold; width:100%;">Visualizar</button>`;
       grid.appendChild(card);
     });
   }
@@ -273,16 +199,10 @@
   }
 
   document.getElementById('search-bar').addEventListener('input', (e) => {
-    if (document.getElementById('year-grid').style.display !== 'none') {
-      renderYears(e.target.value);
-    }
+    if (document.getElementById('year-grid').style.display !== 'none') renderYears(e.target.value);
   });
 
   window.onload = () => renderYears();
-  
-  // Mock para evitar erros do script original
-  window.toggleSidebar = () => {};
-  window.closeSidebar = () => {};
 </script>
 </body>
 </html>
