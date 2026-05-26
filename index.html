@@ -3,116 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apostilas Gordinho SP</title>
+    <title>Portal de Apostilas - GORDINHO SP</title>
     <style>
         :root {
             --primary: #dc2626;
-            --primary-dark: #b91c1c;
-            --bg-dark: #1a0000;
-            --card-bg: #2a0000;
+            --primary-hover: #b91c1c;
+            --bg-dark: #0a0000;
+            --card-bg: #1a0000;
+            --card-border: #330000;
             --text-light: #ffffff;
-            --text-muted: #fca5a5;
+            --text-muted: #9ca3af;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
             background-color: var(--bg-dark);
             color: var(--text-light);
             line-height: 1.6;
         }
 
-        /* 1. Cabeçalho */
+        /* Cabeçalho */
         header {
-            background-color: #000;
-            padding: 20px 5%;
+            background: #000;
+            padding: 1.5rem 5%;
             border-bottom: 2px solid var(--primary);
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         header h1 {
             color: var(--primary);
-            font-size: 1.8rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            display: inline-block;
+            font-size: 1.5rem;
+            font-weight: 900;
+            letter-spacing: -1px;
         }
 
-        /* 2. Seção Principal */
+        /* Main Section */
         main {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 2rem;
         }
 
-        /* 3. Sistema de Pesquisa */
-        .search-section {
-            background-color: var(--card-bg);
-            padding: 30px;
-            border-radius: 12px;
-            border: 1px solid var(--primary);
-            margin-bottom: 40px;
-            box-shadow: 0 4px 20px rgba(220, 38, 38, 0.1);
+        /* Sistema de Pesquisa */
+        .search-area {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 1rem;
+            border: 1px solid var(--card-border);
+            margin-bottom: 3rem;
+            text-align: center;
         }
 
         .search-form {
             display: flex;
-            align-items: center;
-            gap: 15px;
-            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1rem;
         }
 
-        .search-form label {
-            font-weight: 600;
-            color: var(--text-muted);
-        }
-
-        .search-form input {
+        input {
+            padding: 0.8rem 1.2rem;
+            border-radius: 0.5rem;
+            border: 1px solid var(--card-border);
             background: #000;
-            border: 1px solid var(--primary);
-            padding: 10px 15px;
-            border-radius: 8px;
-            color: white;
-            flex-grow: 1;
+            color: #fff;
+            width: 100%;
             max-width: 300px;
         }
 
-        .search-form button {
-            background-color: var(--primary);
-            color: white;
+        button {
+            padding: 0.8rem 2rem;
+            background: var(--primary);
+            color: #fff;
             border: none;
-            padding: 10px 25px;
-            border-radius: 8px;
-            cursor: pointer;
+            border-radius: 0.5rem;
             font-weight: bold;
-            transition: background 0.3s;
+            cursor: pointer;
+            transition: 0.3s;
         }
 
-        .search-form button:hover {
-            background-color: var(--primary-dark);
+        button:hover { background: var(--primary-hover); }
+
+        /* Grid de Anos/Cards */
+        .section-title {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+            padding-left: 1rem;
         }
 
-        /* 4. Área de Exibição */
-        .apostilas-container {
+        .apostilas-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
         }
 
         .apostila-card {
-            background-color: var(--card-bg);
-            border-radius: 12px;
-            padding: 25px;
-            border: 1px solid rgba(220, 38, 38, 0.2);
-            transition: transform 0.3s, border-color 0.3s;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            transition: 0.3s;
             display: flex;
             flex-direction: column;
         }
@@ -120,74 +119,52 @@
         .apostila-card:hover {
             transform: translateY(-5px);
             border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(220, 38, 38, 0.1);
         }
 
-        .apostila-card h2 {
-            font-size: 1.3rem;
+        .apostila-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            background: rgba(220, 38, 38, 0.1);
             color: var(--primary);
-            margin-bottom: 10px;
-        }
-
-        .apostila-card .year-label {
-            font-size: 0.9rem;
+            border-radius: 2rem;
+            font-size: 0.8rem;
             font-weight: bold;
-            color: var(--text-muted);
-            margin-bottom: 12px;
+            margin-bottom: 1rem;
         }
 
-        .apostila-card p {
-            font-size: 0.95rem;
-            margin-bottom: 20px;
-            color: #d1d5db;
+        .description {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
             flex-grow: 1;
         }
 
-        .apostila-card a {
-            display: block;
+        .btn-view {
             text-align: center;
-            background-color: transparent;
-            border: 1px solid var(--primary);
-            color: var(--primary);
             text-decoration: none;
-            padding: 10px;
-            border-radius: 6px;
+            color: #fff;
+            border: 1px solid var(--primary);
+            padding: 0.6rem;
+            border-radius: 0.5rem;
+            font-size: 0.9rem;
             font-weight: 600;
-            transition: all 0.3s;
+            transition: 0.3s;
         }
 
-        .apostila-card a:hover {
-            background-color: var(--primary);
-            color: white;
+        .btn-view:hover {
+            background: var(--primary);
         }
 
-        .no-results {
-            grid-column: 1 / -1;
-            text-align: center;
-            padding: 40px;
-            font-size: 1.2rem;
-            color: var(--text-muted);
-        }
-
-        /* Estilização Responsiva */
-        @media screen and (max-width: 768px) {
-            header h1 {
-                font-size: 1.4rem;
-                width: 100%;
-                text-align: center;
-            }
-            
-            .search-form {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .search-form input {
-                max-width: 100%;
-            }
-
-            .apostilas-container {
-                grid-template-columns: 1fr;
-            }
+        @media (max-width: 768px) {
+            .search-form { flex-direction: column; align-items: center; }
+            input { max-width: 100%; }
         }
     </style>
 </head>
@@ -195,106 +172,108 @@
 
     <header>
         <h1>GORDINHO SP</h1>
+        <div style="font-size: 0.8rem; opacity: 0.5;">Portal Oficial de Materiais</div>
     </header>
 
     <main>
-        <section class="search-section">
+        <section class="search-area">
+            <h2 style="margin-bottom: 0.5rem;">Qual o seu ano escolar?</h2>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Digite o número para filtrar (6 a 9 para Fundamental, 1 a 3 para Médio)</p>
             <form id="search-form" class="search-form">
-                <label for="year-input">Pesquisar por Ano:</label>
-                <input type="number" id="year-input" placeholder="Ex: 3" min="1">
-                <button type="submit" id="search-button">Buscar</button>
+                <input type="number" id="year-input" placeholder="Ex: 3" min="1" max="9">
+                <button type="submit">Filtrar Apostilas</button>
             </form>
         </section>
 
-        <div class="apostilas-container" id="apostilas-container">
-            <!-- Cards serão inseridos aqui -->
+        <div id="content-area">
+            <!-- Os cards serão injetados aqui via JS -->
         </div>
     </main>
 
     <script>
-        // Dados reais das apostilas mapeados do projeto Gordinho Tarefas
-        const mockApostilas = [
-            { 
-                id: 1, 
-                titulo: "Português e Matemática", 
-                ano: 3, 
-                descricao: "Apostila completa do 3º Ano do Ensino Médio - Volume 1.", 
-                link: "https://apostilas.crimsonzerohub.xyz/3_Ano/1_volume/portugues_matematica/download/portugues_matematica.pdf" 
-            },
-            { 
-                id: 2, 
-                titulo: "História, Física e Inglês", 
-                ano: 3, 
-                descricao: "Material de Ciências Humanas e Linguagens - 3º Ano - Volume 1.", 
-                link: "https://apostilas.crimsonzerohub.xyz/3_Ano/1_volume/historia_fisica_ingles/download/historia_fisica_ingles.pdf" 
-            },
-            { 
-                id: 3, 
-                titulo: "Português e Matemática", 
-                ano: 2, 
-                descricao: "Material de estudo focado em competências para o 2º Ano do Ensino Médio.", 
-                link: "https://apostilas.crimsonzerohub.xyz/2_Ano/1_volume/portugues_matematica/download/portugues_matematica.pdf" 
-            },
-            { 
-                id: 4, 
-                titulo: "Física, Biologia e Química", 
-                ano: 2, 
-                descricao: "Apostila de Ciências da Natureza para o 2º Ano - Volume 1.", 
-                link: "https://apostilas.crimsonzerohub.xyz/2_Ano/1_volume/fisica_biologia_quimica/download/fisica_biologia_quimica.pdf" 
-            },
-            { 
-                id: 5, 
-                titulo: "Português e Matemática", 
-                ano: 1, 
-                descricao: "Início da jornada do Ensino Médio - Volume 1.", 
-                link: "https://apostilas.crimsonzerohub.xyz/1_Ano/1_volume/portugues_matematica/download/portugues_matematica.pdf" 
-            },
-            { 
-                id: 6, 
-                titulo: "História, Geografia e Inglês", 
-                ano: 9, 
-                descricao: "Material preparatório para o Ensino Médio - 9º Ano Fundamental.", 
-                link: "https://apostilas.crimsonzerohub.xyz/9_Ano/1_volume/historia_ciencias_ingles_projeto_de_vida/download/historia_ciencias_ingles_projeto_de_vida.pdf" 
-            }
+        const BASE_URL = "https://apostilas.crimsonzerohub.xyz";
+        
+        // Mapeamento completo de todas as apostilas do servidor
+        const todasApostilas = [
+            // ENSINO MÉDIO - 3º ANO
+            { id: '3v1_pm', titulo: "Português e Matemática", ano: 3, vol: 1, desc: "Volume 1 - Material base de Linguagens e Matemática.", path: "/3_Ano/1_volume/portugues_matematica" },
+            { id: '3v1_hfi', titulo: "História, Física e Inglês", ano: 3, vol: 1, desc: "Volume 1 - Ciências Humanas e Natureza.", path: "/3_Ano/1_volume/historia_fisica_ingles" },
+            { id: '3v2_pm', titulo: "Português e Matemática", ano: 3, vol: 2, desc: "Volume 2 - Avançado.", path: "/3_Ano/2_volume/portugues_matematica" },
+
+            // ENSINO MÉDIO - 2º ANO
+            { id: '2v1_pm', titulo: "Português e Matemática", ano: 2, vol: 1, desc: "Volume 1 - Conteúdo programático oficial.", path: "/2_Ano/1_volume/portugues_matematica" },
+            { id: '2v1_fbq', titulo: "Física, Biologia e Química", ano: 2, vol: 1, desc: "Volume 1 - Ciências da Natureza.", path: "/2_Ano/1_volume/fisica_biologia_quimica" },
+            { id: '2v2_hgc', titulo: "História, Geografia e Ciências", ano: 2, vol: 2, desc: "Volume 2 - Humanas e Sociais.", path: "/2_Ano/2_volume/historia_ciencias_geografia_ingles" },
+
+            // ENSINO MÉDIO - 1º ANO
+            { id: '1v1_pm', titulo: "Português e Matemática", ano: 1, vol: 1, desc: "Volume 1 - Nivelamento e Base.", path: "/1_Ano/1_volume/portugues_matematica" },
+            { id: '1v1_fbq', titulo: "Física, Biologia e Química", ano: 1, vol: 1, desc: "Volume 1 - Introdução às Ciências.", path: "/1_Ano/1_volume/fisica_biologia_quimica" },
+
+            // FUNDAMENTAL - 9º ANO
+            { id: '9v1_pm', titulo: "Português e Matemática", ano: 9, vol: 1, desc: "Volume 1 - Preparatório Ensino Médio.", path: "/9_Ano/1_volume/portugues_matematica" },
+            { id: '9v1_hc', titulo: "História e Ciências", ano: 9, vol: 1, desc: "Volume 1 - Projeto de Vida e Sociedade.", path: "/9_Ano/1_volume/historia_ciencias_ingles_projeto_de_vida" },
+
+            // FUNDAMENTAL - 8º ANO
+            { id: '8v1_pm', titulo: "Português e Matemática", ano: 8, vol: 1, desc: "Volume 1 - Fundamental II.", path: "/8_Ano/1_volume/portugues_matematica" },
+
+            // FUNDAMENTAL - 7º ANO
+            { id: '7v1_pm', titulo: "Português e Matemática", ano: 7, vol: 1, desc: "Volume 1 - Fundamental II.", path: "/7_Ano/1_volume/portugues_matematica" },
+
+            // FUNDAMENTAL - 6º ANO
+            { id: '6v1_pm', titulo: "Português e Matemática", ano: 6, vol: 1, desc: "Volume 1 - Transição Fundamental I para II.", path: "/6_Ano/1_volume/portugues_matematica" }
         ];
 
-        function filterApostilasByYear(year) {
-            if (!year) return mockApostilas;
-            return mockApostilas.filter(ap => ap.ano == year);
-        }
-
-        function displayApostilas(apostilas) {
-            const container = document.getElementById('apostilas-container');
+        function renderizar(filtroAno = null) {
+            const container = document.getElementById('content-area');
             container.innerHTML = '';
 
-            if (apostilas.length === 0) {
-                container.innerHTML = '<div class="no-results">Nenhuma apostila encontrada para este ano. Tente outro (ex: 1, 2, 3 ou 9).</div>';
+            // Agrupar por ano para criar os "Cards de Anos" (Seções)
+            const anosUnicos = [...new Set(todasApostilas.map(a => a.ano))].sort((a, b) => b - a);
+
+            const anosParaMostrar = filtroAno ? [parseInt(filtroAno)] : anosUnicos;
+
+            if (anosParaMostrar.length === 0 || (filtroAno && !anosUnicos.includes(parseInt(filtroAno)))) {
+                container.innerHTML = `<div style="text-align:center; padding: 3rem; color: var(--primary);">Nenhum material encontrado para o ${filtroAno}º Ano.</div>`;
                 return;
             }
 
-            apostilas.forEach(ap => {
-                const card = document.createElement('div');
-                card.className = 'apostila-card';
-                card.innerHTML = `
-                    <h2>${ap.titulo}</h2>
-                    <div class="year-label">Série: ${ap.ano}º Ano</div>
-                    <p>${ap.descricao}</p>
-                    <a href="${ap.link}" target="_blank">Baixar PDF</a>
+            anosParaMostrar.forEach(ano => {
+                const label = ano <= 3 ? `${ano}º Ano - Médio` : `${ano}º Ano - Fundamental`;
+                
+                let html = `
+                    <h2 class="section-title">${label}</h2>
+                    <div class="apostilas-grid">
                 `;
-                container.appendChild(card);
+
+                const apostilasDoAno = todasApostilas.filter(a => a.ano === ano);
+                
+                apostilasDoAno.forEach(ap => {
+                    const folder = ap.path.split('/').pop();
+                    const downloadLink = `${BASE_URL}${ap.path}/download/${folder}.pdf`;
+                    
+                    html += `
+                        <div class="apostila-card">
+                            <span class="badge">Volume ${ap.vol}</span>
+                            <h3>${ap.titulo}</h3>
+                            <p class="description">${ap.desc}</p>
+                            <a href="${downloadLink}" class="btn-view" target="_blank">Baixar Apostila (PDF)</a>
+                        </div>
+                    `;
+                });
+
+                html += `</div>`;
+                container.innerHTML += html;
             });
         }
 
-        // Event Listener para a pesquisa
-        document.getElementById('search-form').addEventListener('submit', function(e) {
+        document.getElementById('search-form').addEventListener('submit', (e) => {
             e.preventDefault();
-            const yearVal = document.getElementById('year-input').value;
-            const filtered = filterApostilasByYear(yearVal);
-            displayApostilas(filtered);
+            const ano = document.getElementById('year-input').value;
+            renderizar(ano);
         });
 
-        // Chamada inicial
-        displayApostilas(mockApostilas);
+        // Inicializar com tudo
+        renderizar();
     </script>
 </body>
 </html>
