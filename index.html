@@ -1,282 +1,254 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal de Apostilas - GORDINHO SP</title>
-    <style>
-        :root {
-            --primary: #dc2626;
-            --primary-hover: #b91c1c;
-            --bg-dark: #0a0000;
-            --card-bg: #1a0000;
-            --card-border: #330000;
-            --text-light: #ffffff;
-            --text-muted: #9ca3af;
-        }
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no,maximum-scale=1"/>
+  <link rel="icon" type="image/webp" href="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Cdefs%3E%3CradialGradient%20id%3D%22bg%22%20cx%3D%2250%25%22%20cy%3D%2250%25%22%20r%3D%2250%25%22%3E%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%231a0000%22/%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23000000%22/%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2248%22%20fill%3D%22url%28%23bg%29%22%20stroke%3D%22%23dc2626%22%20stroke-width%3D%223%22/%3E%3Ctext%20x%3D%2250%22%20y%3D%2272%22%20font-family%3D%22Arial%20Black%2CArial%2Csans-serif%22%20font-size%3D%2268%22%20font-weight%3D%22900%22%20fill%3D%22%23dc2626%22%20text-anchor%3D%22middle%22%3EG%3C/text%3E%3C/svg%3E"/>
+  <title>Apostilas - GORDINHO SP</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Sora:wght@700;800&display=swap" rel="stylesheet"/>
+  
+  <style>
+    :root {
+      --dark-bg: #1a0000;
+      --primary: #dc2626;
+      --accent: #ef4444;
+      --card-bg: rgba(42, 0, 0, 0.6);
+    }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-light);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        header {
-            background: #000;
-            padding: 1.5rem 5%;
-            border-bottom: 2px solid var(--primary);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    body {
+      background: radial-gradient(ellipse at top, #2a0000 0%, #0a0000 100%) no-repeat fixed;
+      color: #fff;
+      font-family: 'Open Sans', sans-serif;
+      min-height: 100vh;
+    }
 
-        header h1 { color: var(--primary); font-size: 1.5rem; font-weight: 900; }
+    /* Cabeçalho */
+    .topbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 70px;
+      background: rgba(26, 0, 0, 0.95);
+      border-bottom: 1px solid var(--primary);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 25px;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+    }
 
-        main { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+    .topbar-logo-text {
+      font-family: 'Sora', sans-serif;
+      font-weight: 800;
+      font-size: 22px;
+      color: var(--primary);
+      letter-spacing: -0.5px;
+    }
 
-        .search-area {
-            background: var(--card-bg);
-            padding: 2rem;
-            border-radius: 1rem;
-            border: 1px solid var(--card-border);
-            margin-bottom: 3rem;
-            text-align: center;
-        }
+    .topbar-user {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
-        .search-form { display: flex; gap: 1rem; justify-content: center; margin-top: 1rem; }
+    .topbar-avatar {
+      width: 35px;
+      height: 35px;
+      background: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
 
-        input {
-            padding: 0.8rem 1.2rem;
-            border-radius: 0.5rem;
-            border: 1px solid var(--card-border);
-            background: #000;
-            color: #fff;
-            width: 100%;
-            max-width: 300px;
-        }
+    /* Conteúdo Principal */
+    .main-content {
+      padding: 100px 20px 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
 
-        button {
-            padding: 0.8rem 2rem;
-            background: var(--primary);
-            color: #fff;
-            border: none;
-            border-radius: 0.5rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s;
-        }
+    .apostilas-header {
+      margin-bottom: 30px;
+      text-align: left;
+    }
 
-        .section-title {
-            font-size: 1.2rem;
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-            border-left: 4px solid var(--primary);
-            padding-left: 1rem;
-            margin-top: 2rem;
-        }
+    .apostilas-title {
+      font-family: 'Sora', sans-serif;
+      font-size: 28px;
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
 
-        .apostilas-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
+    .apostilas-subtitle {
+      color: #ccc;
+      font-size: 16px;
+    }
 
-        .apostila-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 1rem;
-            padding: 1.5rem;
-            transition: 0.3s;
-            display: flex;
-            flex-direction: column;
-        }
+    /* Grid de Apostilas */
+    .apostilas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
 
-        .apostila-card:hover { transform: translateY(-5px); border-color: var(--primary); }
+    .apostila-card {
+      background: var(--card-bg);
+      border: 1px solid rgba(220, 38, 38, 0.3);
+      border-radius: 15px;
+      padding: 20px;
+      transition: transform 0.3s, border-color 0.3s;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
 
-        .badge {
-            display: inline-block;
-            padding: 0.2rem 0.6rem;
-            background: rgba(220, 38, 38, 0.1);
-            color: var(--primary);
-            border-radius: 2rem;
-            font-size: 0.7rem;
-            font-weight: bold;
-            margin-bottom: 0.8rem;
-            width: fit-content;
-        }
+    .apostila-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--primary);
+      background: rgba(60, 0, 0, 0.8);
+    }
 
-        .description { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem; flex-grow: 1; }
+    .card-icon {
+      font-size: 40px;
+      color: var(--primary);
+    }
 
-        .btn-view {
-            text-align: center;
-            cursor: pointer;
-            background: transparent;
-            color: #fff;
-            border: 1px solid var(--primary);
-            padding: 0.6rem;
-            border-radius: 0.5rem;
-            font-size: 0.9rem;
-            font-weight: 600;
-            transition: 0.3s;
-        }
+    .card-info h3 {
+      font-size: 18px;
+      margin-bottom: 5px;
+    }
 
-        .btn-view:hover { background: var(--primary); }
+    .card-info p {
+      font-size: 14px;
+      color: #aaa;
+    }
 
-        /* Modal do Visualizador */
-        #viewer-modal {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: #000;
-            z-index: 2000;
-            flex-direction: column;
-        }
+    .btn-view {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 8px;
+      font-weight: bold;
+      text-align: center;
+      cursor: pointer;
+      width: 100%;
+    }
 
-        #viewer-modal.active { display: flex; }
+    /* Modal PDF */
+    .pdf-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: #000;
+      z-index: 2000;
+      flex-direction: column;
+    }
 
-        .viewer-header {
-            background: #111;
-            padding: 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid var(--primary);
-        }
+    .pdf-modal.active { display: flex; }
 
-        .close-viewer {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 0.4rem;
-            cursor: pointer;
-            font-weight: bold;
-        }
+    .pdf-header {
+      height: 60px;
+      background: var(--dark-bg);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+      border-bottom: 1px solid var(--primary);
+    }
 
-        #pdf-frame { width: 100%; height: 100%; border: none; }
+    .pdf-close {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+    }
 
-        @media (max-width: 768px) {
-            .search-form { flex-direction: column; align-items: center; }
-            input { max-width: 100%; }
-        }
-    </style>
+    .pdf-frame {
+      flex: 1;
+      width: 100%;
+      border: none;
+    }
+
+    @media (max-width: 600px) {
+      .topbar { padding: 0 15px; }
+      .topbar-logo-text { font-size: 18px; }
+      .apostilas-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
 
-    <header>
-        <h1>GORDINHO SP</h1>
-        <div style="font-size: 0.8rem; opacity: 0.5;">Visualizador de Apostilas</div>
-    </header>
+  <header class="topbar">
+    <div class="topbar-logo-text">GORDINHO SP</div>
+    <div class="topbar-user">
+      <div class="topbar-avatar">G</div>
+      <span class="topbar-username">Estudante</span>
+    </div>
+  </header>
 
-    <main>
-        <section class="search-area">
-            <h2>Qual o seu ano escolar?</h2>
-            <form id="search-form" class="search-form">
-                <input type="number" id="year-input" placeholder="Ex: 3" min="1" max="9">
-                <button type="submit">Visualizar Apostilas</button>
-            </form>
-        </section>
-
-        <div id="content-area"></div>
-    </main>
-
-    <!-- Visualizador Modal -->
-    <div id="viewer-modal">
-        <div class="viewer-header">
-            <span id="viewer-title">Visualizando Apostila</span>
-            <button class="close-viewer" onclick="closeViewer()">Fechar</button>
-        </div>
-        <iframe id="pdf-frame"></iframe>
+  <main class="main-content">
+    <div class="apostilas-header">
+      <h1 class="apostilas-title">
+        <i class="fas fa-book-open"></i> Apostilas
+      </h1>
+      <p class="apostilas-subtitle">Material oficial de estudo</p>
     </div>
 
-    <script>
-        const BASE_URL = "https://apostilas.crimsonzerohub.xyz";
-        
-        const todasApostilas = [
-            // 3º ANO MÉDIO
-            { id: '3v1_pm', titulo: "Português e Matemática", ano: 3, vol: 1, path: "/3_Ano/1_volume/portugues_matematica" },
-            { id: '3v1_hfi', titulo: "História, Física e Inglês", ano: 3, vol: 1, path: "/3_Ano/1_volume/historia_fisica_ingles" },
-            { id: '3v2_pm', titulo: "Português e Matemática", ano: 3, vol: 2, path: "/3_Ano/2_volume/portugues_matematica" },
-            { id: '3v2_hfi', titulo: "História, Física e Inglês", ano: 3, vol: 2, path: "/3_Ano/2_volume/historia_fisica_ingles" },
+    <div class="apostilas-grid" id="grid">
+      <!-- Exemplo de Card -->
+      <div class="apostila-card" onclick="openPdf('Matemática - 1º Ano', 'https://crimsonzerohub.xyz/pdf/exemplo.pdf')">
+        <div class="card-icon"><i class="fas fa-file-pdf"></i></div>
+        <div class="card-info">
+          <h3>Matemática</h3>
+          <p>1º Ano - Volume 1</p>
+        </div>
+        <button class="btn-view">Visualizar</button>
+      </div>
+      
+      <div class="apostila-card" onclick="openPdf('Português - 2º Ano', 'https://crimsonzerohub.xyz/pdf/exemplo2.pdf')">
+        <div class="card-icon"><i class="fas fa-file-pdf"></i></div>
+        <div class="card-info">
+          <h3>Português</h3>
+          <p>2º Ano - Volume 1</p>
+        </div>
+        <button class="btn-view">Visualizar</button>
+      </div>
+    </div>
+  </main>
 
-            // 2º ANO MÉDIO
-            { id: '2v1_pm', titulo: "Português e Matemática", ano: 2, vol: 1, path: "/2_Ano/1_volume/portugues_matematica" },
-            { id: '2v1_hgi', titulo: "História, Geografia e Inglês", ano: 2, vol: 1, path: "/2_Ano/1_volume/historia_fisica_ingles" },
-            { id: '2v1_fbq', titulo: "Física, Biologia e Química", ano: 2, vol: 1, path: "/2_Ano/1_volume/fisica_biologia_quimica" },
-            { id: '2v2_pm', titulo: "Português e Matemática", ano: 2, vol: 2, path: "/2_Ano/2_volume/portugues_matematica" },
-            { id: '2v2_hcg', titulo: "História, Ciências, Geografia e Inglês", ano: 2, vol: 2, path: "/2_Ano/2_volume/historia_ciencias_geografia_ingles" },
+  <!-- Visualizador Simples -->
+  <div class="pdf-modal" id="modal">
+    <div class="pdf-header">
+      <span id="pdf-title">Título da Apostila</span>
+      <button class="pdf-close" onclick="closePdf()">&times;</button>
+    </div>
+    <iframe class="pdf-frame" id="pdf-frame"></iframe>
+  </div>
 
-            // 1º ANO MÉDIO
-            { id: '1v1_pm', titulo: "Português e Matemática", ano: 1, vol: 1, path: "/1_Ano/1_volume/portugues_matematica" },
-            { id: '1v1_fbq', titulo: "Física, Biologia e Química", ano: 1, vol: 1, path: "/1_Ano/1_volume/fisica_biologia_quimica" },
-            { id: '1v1_hgi', titulo: "História, Geografia e Inglês", ano: 1, vol: 1, path: "/1_Ano/1_volume/historia_fisica_ingles" },
+  <script>
+    function openPdf(title, url) {
+      document.getElementById('pdf-title').innerText = title;
+      // Usando o visualizador do Google para garantir compatibilidade
+      document.getElementById('pdf-frame').src = 'https://docs.google.com/viewer?url=' + encodeURIComponent(url) + '&embedded=true';
+      document.getElementById('modal').classList.add('active');
+    }
 
-            // SÃO PAULO EM AÇÃO (Exemplo 3º ano)
-            { id: 'spa_mat_3', titulo: "SP em Ação — Matemática", ano: 3, vol: "Único", path: "/SAO-PAULO-EM-ACAO/livro_1/SAO-PAULO-EM-ACAO-MATEMATICA" },
-            { id: 'spa_por_3', titulo: "SP em Ação — Português", ano: 3, vol: "Único", path: "/SAO-PAULO-EM-ACAO/livro_1/SAO-PAULO-EM-ACAO-PORTUGUES" },
-
-            // FUNDAMENTAL 6º AO 9º
-            { id: '9v1_pm', titulo: "Português e Matemática", ano: 9, vol: 1, path: "/9_Ano/1_volume/portugues_matematica" },
-            { id: '8v1_pm', titulo: "Português e Matemática", ano: 8, vol: 1, path: "/8_Ano/1_volume/portugues_matematica" },
-            { id: '7v1_pm', titulo: "Português e Matemática", ano: 7, vol: 1, path: "/7_Ano/1_volume/portugues_matematica" },
-            { id: '6v1_pm', titulo: "Português e Matemática", ano: 6, vol: 1, path: "/6_Ano/1_volume/portugues_matematica" }
-        ];
-
-        function openViewer(title, path) {
-            const folder = path.split('/').pop();
-            const url = `${BASE_URL}${path}/download/${folder}.pdf`;
-            document.getElementById('viewer-title').textContent = title;
-            document.getElementById('pdf-frame').src = `https://docs.google.com/viewer?url=${encodeURIComponent(url)}&embedded=true`;
-            document.getElementById('viewer-modal').classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeViewer() {
-            document.getElementById('viewer-modal').classList.remove('active');
-            document.getElementById('pdf-frame').src = '';
-            document.body.style.overflow = 'auto';
-        }
-
-        function renderizar(filtroAno = null) {
-            const container = document.getElementById('content-area');
-            container.innerHTML = '';
-            const anosUnicos = [...new Set(todasApostilas.map(a => a.ano))].sort((a, b) => b - a);
-            const anosParaMostrar = filtroAno ? [parseInt(filtroAno)] : anosUnicos;
-
-            anosParaMostrar.forEach(ano => {
-                const apostilasDoAno = todasApostilas.filter(a => a.ano === ano);
-                if (apostilasDoAno.length === 0) return;
-
-                const label = ano <= 3 ? `${ano}º Ano - Médio` : `${ano}º Ano - Fundamental`;
-                let html = `<h2 class="section-title">${label}</h2><div class="apostilas-grid">`;
-                
-                apostilasDoAno.forEach(ap => {
-                    html += `
-                        <div class="apostila-card">
-                            <span class="badge">Volume ${ap.vol}</span>
-                            <h3>${ap.titulo}</h3>
-                            <p class="description">Material digital oficial do estado de SP.</p>
-                            <button class="btn-view" onclick="openViewer('${ap.titulo}', '${ap.path}')">Visualizar Apostila</button>
-                        </div>`;
-                });
-                html += `</div>`;
-                container.innerHTML += html;
-            });
-        }
-
-        document.getElementById('search-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            renderizar(document.getElementById('year-input').value);
-        });
-
-        renderizar();
-    </script>
+    function closePdf() {
+      document.getElementById('modal').classList.remove('active');
+      document.getElementById('pdf-frame').src = '';
+    }
+  </script>
 </body>
 </html>
